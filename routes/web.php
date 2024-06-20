@@ -13,6 +13,10 @@ use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ServiceProviderController;
+
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentGatewayController;
+use App\Http\Controllers\BrandController;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 use Carbon\Carbon;
@@ -99,6 +103,24 @@ Route::middleware('auth')->group(function () {
     Route::post('/service-providers', [ServiceProviderController::class, 'create'])->name('service-provider.create');
     Route::patch('/service-providers/{id}', [ServiceProviderController::class, 'update'])->name('service-provider.update');
     Route::delete('/service-providers/{id}', [ServiceProviderController::class, 'destroy'])->name('service-provider.destroy');
+
+    Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/orders/all', [OrderController::class, 'getData'])->name('order.getData');
+    Route::post('/orders', [OrderController::class, 'create'])->name('order.create');
+    Route::patch('/orders/{id}', [OrderController::class, 'update'])->name('order.update');
+    Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
+
+    Route::get('/brands', [BrandController::class, 'index'])->name('brand.index');
+    Route::get('/brands/all', [BrandController::class, 'getData'])->name('brand.getData');
+    Route::post('/brands', [BrandController::class, 'create'])->name('brand.create');
+    Route::patch('/brands/{id}', [BrandController::class, 'update'])->name('brand.update');
+    Route::delete('/brands/{id}', [BrandController::class, 'destroy'])->name('brand.destroy');
+
+    Route::get('/payment-gateways', [PaymentGatewayController::class, 'index'])->name('payment-gateway.index');
+    Route::get('/payment-gateways/all', [PaymentGatewayController::class, 'getData'])->name('payment-gateway.getData');
+    Route::post('/payment-gateways', [PaymentGatewayController::class, 'create'])->name('payment-gateway.create');
+    Route::patch('/payment-gateways/{id}', [PaymentGatewayController::class, 'update'])->name('payment-gateway.update');
+    Route::delete('/payment-gateways/{id}', [PaymentGatewayController::class, 'destroy'])->name('payment-gateway.destroy');
 
     //Route::get('/roles', [RoleController::class, 'edit'])->name('role.edit');
     // Route::resource("/roles", RoleController::class);
